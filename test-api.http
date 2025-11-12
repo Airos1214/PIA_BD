@@ -1,0 +1,20 @@
+### Ver todos los clientes
+GET http://localhost:8080/api/clientes
+Content-Type: application/json
+
+### Agregar un cliente nuevo
+POST http://localhost:8080/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Alejandro",
+  "apellidos": "Jiménez",
+  "correo": "alejandro@gmail.com",
+  "telefono": "8341234567",
+  "calle": "Primavera",
+  "numero": "23",
+  "colonia": "Centro",
+  "ciudad": "Ciudad Victoria",
+  "estado": "Tamaulipas",
+  "cp": "87000"
+}
