@@ -2,6 +2,7 @@ package com.aerolinea.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Boleto")
@@ -18,17 +19,22 @@ public class Boleto {
     @Column(name = "fecha_emision")
     private LocalDate fechaEmision;
 
-    @Column(name = "precio")
-    private Double precio;
+    @Column(name = "precio", precision = 10, scale = 2)
+    private BigDecimal precio;
 
     @Column(name = "clase", length = 20)
     private String clase;
 
-    @Column(name = "asiento", length = 10)
-    private String asiento;
-
     @Column(name = "estado", length = 20)
     private String estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_asiento")
+    private Asiento asiento;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tarifa")
+    private Tarifa tarifa;
 
     @ManyToOne
     @JoinColumn(name = "id_pasajero")
@@ -42,84 +48,40 @@ public class Boleto {
     @JoinColumn(name = "id_instancia_vuelo")
     private InstanciaVuelo instanciaVuelo;
 
-    // Getters y Setters
-    public Integer getIdBoleto() {
-        return idBoleto;
-    }
+    public Boleto() {}
 
-    public void setIdBoleto(Integer idBoleto) {
-        this.idBoleto = idBoleto;
-    }
+    // GETTERS Y SETTERS
 
-    public String getNumeroBoleto() {
-        return numeroBoleto;
-    }
+    public Integer getIdBoleto() { return idBoleto; }
+    public void setIdBoleto(Integer idBoleto) { this.idBoleto = idBoleto; }
 
-    public void setNumeroBoleto(String numeroBoleto) {
-        this.numeroBoleto = numeroBoleto;
-    }
+    public String getNumeroBoleto() { return numeroBoleto; }
+    public void setNumeroBoleto(String numeroBoleto) { this.numeroBoleto = numeroBoleto; }
 
-    public LocalDate getFechaEmision() {
-        return fechaEmision;
-    }
+    public LocalDate getFechaEmision() { return fechaEmision; }
+    public void setFechaEmision(LocalDate fechaEmision) { this.fechaEmision = fechaEmision; }
 
-    public void setFechaEmision(LocalDate fechaEmision) {
-        this.fechaEmision = fechaEmision;
-    }
+    public BigDecimal getPrecio() { return precio; }
+    public void setPrecio(BigDecimal precio) { this.precio = precio; }
 
-    public Double getPrecio() {
-        return precio;
-    }
+    public String getClase() { return clase; }
+    public void setClase(String clase) { this.clase = clase; }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
-    }
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
 
-    public String getClase() {
-        return clase;
-    }
+    public Asiento getAsiento() { return asiento; }
+    public void setAsiento(Asiento asiento) { this.asiento = asiento; }
 
-    public void setClase(String clase) {
-        this.clase = clase;
-    }
+    public Tarifa getTarifa() { return tarifa; }
+    public void setTarifa(Tarifa tarifa) { this.tarifa = tarifa; }
 
-    public String getAsiento() {
-        return asiento;
-    }
+    public Pasajero getPasajero() { return pasajero; }
+    public void setPasajero(Pasajero pasajero) { this.pasajero = pasajero; }
 
-    public void setAsiento(String asiento) {
-        this.asiento = asiento;
-    }
+    public Reserva getReserva() { return reserva; }
+    public void setReserva(Reserva reserva) { this.reserva = reserva; }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public Pasajero getPasajero() {
-        return pasajero;
-    }
-
-    public void setPasajero(Pasajero pasajero) {
-        this.pasajero = pasajero;
-    }
-
-    public Reserva getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
-    }
-
-    public InstanciaVuelo getInstanciaVuelo() {
-        return instanciaVuelo;
-    }
-
-    public void setInstanciaVuelo(InstanciaVuelo instanciaVuelo) {
-        this.instanciaVuelo = instanciaVuelo;
-    }
+    public InstanciaVuelo getInstanciaVuelo() { return instanciaVuelo; }
+    public void setInstanciaVuelo(InstanciaVuelo instanciaVuelo) { this.instanciaVuelo = instanciaVuelo; }
 }

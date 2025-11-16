@@ -26,12 +26,15 @@ public class Pago {
     private String estatus;
 
     @ManyToOne
-    @JoinColumn(name = "id_venta") // FK
+    @JoinColumn(name = "id_metodo_pago")
+    private MetodoPago metodoPagoObj;
+
+    @ManyToOne
+    @JoinColumn(name = "id_venta")
     private VentaEncabezado venta;
 
     public Pago() {}
 
-    // Getters y setters
     public Integer getIdPago() { return idPago; }
     public void setIdPago(Integer idPago) { this.idPago = idPago; }
 
@@ -46,6 +49,9 @@ public class Pago {
 
     public String getEstatus() { return estatus; }
     public void setEstatus(String estatus) { this.estatus = estatus; }
+
+    public MetodoPago getMetodoPagoObj() { return metodoPagoObj; }
+    public void setMetodoPagoObj(MetodoPago metodoPagoObj) { this.metodoPagoObj = metodoPagoObj; }
 
     public VentaEncabezado getVenta() { return venta; }
     public void setVenta(VentaEncabezado venta) { this.venta = venta; }

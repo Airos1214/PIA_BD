@@ -16,15 +16,23 @@ public class BoletoController {
     private final PasajeroRepository pasajeroRepository;
     private final ReservaRepository reservaRepository;
     private final InstanciaVueloRepository instanciaVueloRepository;
+    private final AsientoRepository asientoRepository;
+    private final TarifaRepository tarifaRepository;
 
-    public BoletoController(BoletoService boletoService,
-                            PasajeroRepository pasajeroRepository,
-                            ReservaRepository reservaRepository,
-                            InstanciaVueloRepository instanciaVueloRepository) {
+    public BoletoController(
+            BoletoService boletoService,
+            PasajeroRepository pasajeroRepository,
+            ReservaRepository reservaRepository,
+            InstanciaVueloRepository instanciaVueloRepository,
+            AsientoRepository asientoRepository,
+            TarifaRepository tarifaRepository) {
+
         this.boletoService = boletoService;
         this.pasajeroRepository = pasajeroRepository;
         this.reservaRepository = reservaRepository;
         this.instanciaVueloRepository = instanciaVueloRepository;
+        this.asientoRepository = asientoRepository;
+        this.tarifaRepository = tarifaRepository;
     }
 
     @GetMapping
@@ -37,19 +45,31 @@ public class BoletoController {
 
         if (boleto.getPasajero() != null && boleto.getPasajero().getIdPasajero() != null) {
             boleto.setPasajero(
-                pasajeroRepository.findById(boleto.getPasajero().getIdPasajero()).orElse(null)
+                    pasajeroRepository.findById(boleto.getPasajero().getIdPasajero()).orElse(null)
             );
         }
 
         if (boleto.getReserva() != null && boleto.getReserva().getIdReserva() != null) {
             boleto.setReserva(
-                reservaRepository.findById(boleto.getReserva().getIdReserva()).orElse(null)
+                    reservaRepository.findById(boleto.getReserva().getIdReserva()).orElse(null)
             );
         }
 
         if (boleto.getInstanciaVuelo() != null && boleto.getInstanciaVuelo().getIdInstanciaVuelo() != null) {
             boleto.setInstanciaVuelo(
-                instanciaVueloRepository.findById(boleto.getInstanciaVuelo().getIdInstanciaVuelo()).orElse(null)
+                    instanciaVueloRepository.findById(boleto.getInstanciaVuelo().getIdInstanciaVuelo()).orElse(null)
+            );
+        }
+
+        if (boleto.getAsiento() != null && boleto.getAsiento().getIdAsiento() != null) {
+            boleto.setAsiento(
+                    asientoRepository.findById(boleto.getAsiento().getIdAsiento()).orElse(null)
+            );
+        }
+
+        if (boleto.getTarifa() != null && boleto.getTarifa().getIdTarifa() != null) {
+            boleto.setTarifa(
+                    tarifaRepository.findById(boleto.getTarifa().getIdTarifa()).orElse(null)
             );
         }
 
