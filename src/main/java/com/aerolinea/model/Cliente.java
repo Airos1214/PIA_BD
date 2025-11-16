@@ -3,112 +3,83 @@ package com.aerolinea.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "Cliente")
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_cliente;
+    @Column(name = "id_cliente")
+    private Integer idCliente;
 
+    @Column(name = "nombre", length = 50)
     private String nombre;
-    private String apellidos;
-    private String correo;
+
+    @Column(name = "apellido_p", length = 50)
+    private String apellidoP;
+
+    @Column(name = "apellido_m", length = 50)
+    private String apellidoM;
+
+    @Column(name = "telefono", length = 15)
     private String telefono;
+
+    @Column(name = "correo", length = 100, unique = true)
+    private String correo;
+
+    @Column(name = "calle", length = 100)
     private String calle;
+
+    @Column(name = "numero", length = 10)
     private String numero;
+
+    @Column(name = "colonia", length = 50)
     private String colonia;
+
+    @Column(name = "ciudad", length = 50)
     private String ciudad;
+
+    @Column(name = "estado", length = 50)
     private String estado;
-    private String cp;
 
-    // Getters y Setters
-    public int getId_cliente() {
-        return id_cliente;
-    }
+    @Column(name = "codigo_postal", length = 10)
+    private String codigoPostal;
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
-    }
+    public Cliente() {}
 
-    public String getNombre() {
-        return nombre;
-    }
+    // Getters y setters
+    public Integer getIdCliente() { return idCliente; }
+    public void setIdCliente(Integer idCliente) { this.idCliente = idCliente; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getApellidos() {
-        return apellidos;
-    }
+    public String getApellidoP() { return apellidoP; }
+    public void setApellidoP(String apellidoP) { this.apellidoP = apellidoP; }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
+    public String getApellidoM() { return apellidoM; }
+    public void setApellidoM(String apellidoM) { this.apellidoM = apellidoM; }
 
-    public String getCorreo() {
-        return correo;
-    }
+    public String getTelefono() { return telefono; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+    public String getCorreo() { return correo; }
+    public void setCorreo(String correo) { this.correo = correo; }
 
-    public String getTelefono() {
-        return telefono;
-    }
+    public String getCalle() { return calle; }
+    public void setCalle(String calle) { this.calle = calle; }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+    public String getNumero() { return numero; }
+    public void setNumero(String numero) { this.numero = numero; }
 
-    public String getCalle() {
-        return calle;
-    }
+    public String getColonia() { return colonia; }
+    public void setColonia(String colonia) { this.colonia = colonia; }
 
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
+    public String getCiudad() { return ciudad; }
+    public void setCiudad(String ciudad) { this.ciudad = ciudad; }
 
-    public String getNumero() {
-        return numero;
-    }
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getColonia() {
-        return colonia;
-    }
-
-    public void setColonia(String colonia) {
-        this.colonia = colonia;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getCp() {
-        return cp;
-    }
-
-    public void setCp(String cp) {
-        this.cp = cp;
-    }
+    public String getCodigoPostal() { return codigoPostal; }
+    public void setCodigoPostal(String codigoPostal) { this.codigoPostal = codigoPostal; }
 }
-
-

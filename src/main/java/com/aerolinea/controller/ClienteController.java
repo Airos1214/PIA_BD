@@ -1,8 +1,8 @@
 package com.aerolinea.controller;
 
 import com.aerolinea.model.Cliente;
-import com.aerolinea.repository.ClienteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.aerolinea.service.ClienteService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,19 +11,46 @@ import java.util.List;
 @RequestMapping("/api/clientes")
 public class ClienteController {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final ClienteService service;
 
-    // Obtener todos los clientes
-    @GetMapping
-    public List<Cliente> getAllClientes() {
-        return clienteRepository.findAll();
+    public ClienteController(ClienteService service) {
+        this.service = service;
     }
 
-    // Agregar un nuevo cliente
+    @GetMapping
+    public List<Cliente> listar() {
+        return service.listar();
+    }
+
     @PostMapping
-    public Cliente addCliente(@RequestBody Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public ResponseEntity<?> crear(@RequestBody Cliente cliente) {
+        try {
+            Cliente creado = service.crear(cliente);
+            return ResponseEntity.ok(creado);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtener(@PathVariable Integer id) {
+        Cliente c = service.obtener(id);
+        return c == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(c);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizar(@PathVariable Integer id, @RequestBody Cliente datos) {
+        try {
+            Cliente actualizado = service.actualizar(id, datos);
+            return actualizado == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(actualizado);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Integer id) {
+        service.eliminar(id);
+        return ResponseEntity.ok().build();
     }
 }
-
