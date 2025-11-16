@@ -1,0 +1,89 @@
+/* --- ESTILOS GENERALES --- */
+body {
+    margin: 0;
+    padding: 0;
+    background: #f2f6fc;
+    font-family: "Segoe UI", sans-serif;
+}
+
+header {
+    background: #003366;
+    color: white;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #cce0ff;
+}
+
+.container {
+    padding: 25px;
+}
+
+/* --- TABLAS --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+th {
+    background: #003366;
+    color: white;
+    text-align: left;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+/* --- BOTONES --- */
+button {
+    padding: 10px 15px;
+    background: #0059b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #004080;
+}
+
+/* --- FORMULARIOS --- */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    max-width: 500px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
