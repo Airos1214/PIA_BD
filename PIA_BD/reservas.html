@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Reservas</h1>
+    <nav>
+        <a href="index.html">Inicio</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h2>Crear nueva reserva</h2>
+
+    <form id="formReserva">
+        <input type="text" id="codigoReserva" placeholder="Código de reserva">
+        <input type="date" id="fechaReserva">
+        <select id="estado">
+            <option>PENDIENTE</option>
+            <option>PAGADA</option>
+            <option>CANCELADA</option>
+        </select>
+        <input type="number" id="idCliente" placeholder="ID Cliente">
+
+        <button onclick="crearReserva(event)">Guardar</button>
+    </form>
+
+    <h2>Lista de Reservas</h2>
+    <table id="tablaReservas">
+        <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>ID Cliente</th>
+        </tr>
+    </table>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pasajeros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Pasajeros</h1>
+    <nav><a href="index.html">Inicio</a></nav>
+</header>
+
+<div class="container">
+
+    <h2>Registrar Pasajero</h2>
+
+    <form id="formPasajero">
+        <input id="nombre" placeholder="Nombre">
+        <input id="apellidoP" placeholder="Apellido paterno">
+        <input id="apellidoM" placeholder="Apellido materno">
+        <input id="correo" placeholder="Correo">
+        <button onclick="crearPasajero(event)">Guardar</button>
+    </form>
+
+    <h2>Lista de Pasajeros</h2>
+    <table id="tablaPasajeros">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido P</th>
+            <th>Apellido M</th>
+            <th>Correo</th>
+        </tr>
+    </table>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
